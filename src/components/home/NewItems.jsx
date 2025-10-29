@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
@@ -115,6 +115,17 @@ const NewItems = () => {
     );
   });
 
+  // Ensure at least 4 items are displayed by padding with repeats if needed
+  const displayItems = useMemo(() => {
+    if (!items || items.length === 0) return [];
+    if (items.length >= 4) return items;
+    const padded = [...items];
+    for (let i = 0; padded.length < 4; i++) {
+      padded.push(items[i % items.length]);
+    }
+    return padded;
+  }, [items]);
+
   return (
     <section id="section-new-items" className="no-bottom">
       <div className="container">
@@ -129,13 +140,13 @@ const NewItems = () => {
           <div className="navigation-wrapper">
             <div ref={sliderRef} className="keen-slider">
               {loading
-                ? new Array(7).fill(0).map((_, index) => (
+                ? new Array(4).fill(0).map((_, index) => (
                     <div className="keen-slider__slide" key={index}>
                       <Skeleton width="100%" height="350px" />
                     </div>
                   ))
-                : items.map((item) => (
-                    <div className="keen-slider__slide" key={item.id}>
+                : displayItems.map((item) => (
+                    <div className="keen-slider__slide" key={`${item.id}-${item.title}-${item.authorId || ""}-${item.nftId || ""}`}> 
                       <Item {...item} />
                     </div>
                   ))}

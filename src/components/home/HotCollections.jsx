@@ -91,7 +91,7 @@ const HotCollections = () => {
 
   const slides = useMemo(() => {
     if (loading) {
-      return new Array(6).fill(0).map((_, index) => (
+      return new Array(4).fill(0).map((_, index) => (
         <div className="keen-slider__slide" key={index}>
           <div className="nft_wrap">
             <Skeleton width="100%" height="200px" />
@@ -108,8 +108,19 @@ const HotCollections = () => {
       ));
     }
 
-    return getHotCollection.map((item) => (
-      <div className="keen-slider__slide" key={item.id}>
+    // Ensure at least 4 items by padding with repeats if fewer than 4
+    const items = getHotCollection || [];
+    const displayItems = (() => {
+      if (items.length >= 4) return items;
+      const padded = [...items];
+      for (let i = 0; padded.length < 4; i++) {
+        padded.push(items[i % items.length]);
+      }
+      return padded;
+    })();
+
+    return displayItems.map((item, idx) => (
+      <div className="keen-slider__slide" key={`${item.id}-${idx}`}> 
         <div className="nft_coll">
           <div className="nft_wrap">
             <Link to={`/item-details/${item.nftId}`}>
