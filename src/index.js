@@ -3,14 +3,17 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 
 const root = createRoot(document.getElementById('root'));
 
+// Use HashRouter on GitHub Pages (github.io) and BrowserRouter elsewhere (e.g., Vercel)
+const RouterComponent = window.location.hostname.includes('github.io') ? HashRouter : BrowserRouter;
+
 root.render(
-  <HashRouter>
+  <RouterComponent>
     <App />
-  </HashRouter>
+  </RouterComponent>
 );
 
 reportWebVitals();
