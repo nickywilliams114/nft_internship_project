@@ -23,8 +23,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:vercel": "PUBLIC_URL=/ react-scripts build",
+    "build": "CI=false react-scripts build",
+    "build:vercel": "CI=false PUBLIC_URL=/ react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
