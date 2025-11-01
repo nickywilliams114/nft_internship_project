@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Page Not Found - Ultraverse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 4rem;
+            margin: 0 0 1rem 0;
+            opacity: 0.9;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin: 0 0 2rem 0;
+            opacity: 0.8;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .countdown {
+            margin-top: 2rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+    </style>
+    <script>
+        // Redirect to main app after 5 seconds
+        let countdown = 5;
+        function updateCountdown() {
+            document.getElementById('countdown').textContent = countdown;
+            if (countdown <= 0) {
+                window.location.href = './docs/';
+            } else {
+                countdown--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+        window.onload = function() {
+            updateCountdown();
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>The page you're looking for doesn't exist, but don't worry!</p>
+        <a href="./docs/" class="btn">Go to Ultraverse App</a>
+        <div class="countdown">
+            Redirecting automatically in <span id="countdown">5</span> seconds...
+        </div>
+    </div>
+</body>
+</html>
