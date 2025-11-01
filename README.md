@@ -1,18 +1,3 @@
-# NFT Internship Project – GitHub Pages
-
-Live site: https://nickywilliams114.github.io/nft_internship_project/
-
-Deployment:
-- Build: `npm run build`
-- Deploy: `npm run deploy` (publishes to `gh-pages` branch)
-- The site serves at `https://<username>.github.io/<repo>/` using the `homepage` in `package.json`.
-
-If deploy fails on Windows with ENAMETOOLONG, you can deploy manually:
-- `git checkout --orphan gh-pages`
-- `git --work-tree build add --all && git commit -m "Deploy"`
-- `git push origin gh-pages --force`
-- `git checkout -f main`
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -83,4 +68,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 # test-repository
